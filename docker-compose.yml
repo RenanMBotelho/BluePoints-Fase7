@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL
+      SPRING_DATASOURCE_USERNAME: RM553736
+      SPRING_DATASOURCE_PASSWORD: 180293
+      SPRING_FLYWAY_BASELINEONMIGRATE: true
+      SPRING_FLYWAY_LOCATIONS: classpath:db/migration
+      SPRING_JPA_SHOW_SQL: true
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: true
+      SPRING_SECURITY_USER_NAME: renan
+      SPRING_SECURITY_USER_PASSWORD: 123
+      SERVER_ERROR_INCLUDE_MESSAGE: always
+      SERVER_ERROR_INCLUDE_STACKTRACE: always
+      SERVER_ERROR_INCLUDE_BINDING_ERRORS: always
