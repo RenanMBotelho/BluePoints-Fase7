@@ -1,3 +1,5 @@
+/*
+
 package br.com.bluepoints.security;
 
 import br.com.bluepoints.repository.UsuarioRepository;
@@ -52,3 +54,4 @@ public class TokenVerify extends OncePerRequestFilter {
 
     }
 }
+*/

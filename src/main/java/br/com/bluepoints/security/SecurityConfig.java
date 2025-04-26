@@ -1,7 +1,6 @@
+
 package br.com.bluepoints.security;
 
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -13,37 +12,30 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private TokenVerify tokenVerify;
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         return http
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorize ->
-                        authorize
-                                .requestMatchers(HttpMethod.GET, "/api/reciclagem").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/reciclagem").permitAll()
-                                .requestMatchers(HttpMethod.PUT, "/api/reciclagem").permitAll()
-                                .requestMatchers(HttpMethod.GET, "/api/reciclagem/*").permitAll()
-                                .requestMatchers(HttpMethod.DELETE, "/api/reciclagem/*").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                                .requestMatchers(
-                                        "/v3/api-docs/**",
-                                        "/swagger-ui/**",
-                                        "/swagger-ui.html"
-                                ).permitAll()
-                                .anyRequest().authenticated())
-                .addFilterBefore(tokenVerify, UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.GET, "/api/reciclagem").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/reciclagem").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/reciclagem").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/reciclagem/*").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/reciclagem/*").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html"
+                        ).permitAll()
+                        .anyRequest().permitAll()) // Agora todas as rotas estão liberadas
                 .build();
     }
 
@@ -54,8 +46,9 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration authenticationConfiguration) throws Exception{
+            AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
-
 }
+
+
