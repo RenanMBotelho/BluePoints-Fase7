@@ -20,6 +20,7 @@ public class CadastroReciclagemService {
     public void setFieldsDelivery(String field, String value) {
         switch (field) {
             case "usuario"  -> reciclagemModel.setUsuario(Integer.parseInt(value));
+            //case "usuario"  -> reciclagemModel.setUsuario(value);
             case "local"    -> reciclagemModel.setLocal(value);
             case "data"     -> reciclagemModel.setData(value);
             case "peso"     -> reciclagemModel.setPeso(Integer.parseInt(value));
