@@ -34,4 +34,14 @@ public class CadastroReciclagemSteps {
                 cadastroReciclagemService.response.jsonPath().prettify(), ErrorMessageModel.class);
         Assert.assertEquals(message, errorMessageModel.getPeso());
     }
+
+    @Dado("que eu recupere o ID da reciclagem criada no contexto")
+    public void queEuRecupereOIDDaReciclagemCriadaNoContexto() {
+        cadastroReciclagemService.retrieveIdDelivery();
+    }
+
+    @Quando("eu enviar a requisição com o ID para o endpoint {string} de deleção de reciclagem")
+    public void euEnviarARequisiçãoComOIDParaOEndpointDeDeleçãoDeReciclagem(String endPoint) {
+        cadastroReciclagemService.deleteDelivery(endPoint);
+    }
 }
