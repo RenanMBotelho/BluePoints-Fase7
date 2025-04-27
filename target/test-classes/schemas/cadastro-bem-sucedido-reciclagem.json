@@ -1,0 +1,53 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/object1745723919.json",
+  "title": "Root",
+  "type": "object",
+  "required": [
+    "usuario",
+    "local",
+    "data",
+    "peso"
+  ],
+  "properties": {
+    "usuario": {
+      "$id": "#root/usuario",
+      "title": "Usuario",
+      "type": "integer",
+      "examples": [
+        1
+      ],
+      "default": 0
+    },
+    "local": {
+      "$id": "#root/local",
+      "title": "Local",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "Centro Reciclagem 3"
+      ],
+      "pattern": "^.*$"
+    },
+    "data": {
+      "$id": "#root/data",
+      "title": "Data",
+      "type": "string",
+      "default": "",
+      "examples": [
+        "2025-04-27"
+      ],
+      "pattern": "^.*$"
+    },
+    "peso": {
+      "$id": "#root/peso",
+      "title": "Peso",
+      "type": "integer",
+      "examples": [
+        10
+      ],
+      "default": 0
+    }
+  }
+}

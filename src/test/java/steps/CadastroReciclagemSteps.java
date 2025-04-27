@@ -1,15 +1,19 @@
 package steps;
 
+import com.networknt.schema.ValidationMessage;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 import model.ErrorMessageModel;
+import org.json.JSONException;
 import org.junit.Assert;
 import services.CadastroReciclagemService;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class CadastroReciclagemSteps {
     CadastroReciclagemService cadastroReciclagemService = new CadastroReciclagemService();
@@ -43,5 +47,16 @@ public class CadastroReciclagemSteps {
     @Quando("eu enviar a requisição com o ID para o endpoint {string} de deleção de reciclagem")
     public void euEnviarARequisiçãoComOIDParaOEndpointDeDeleçãoDeReciclagem(String endPoint) {
         cadastroReciclagemService.deleteDelivery(endPoint);
+    }
+
+    @E("que o arquivo de contrato esperado é o {string}")
+    public void queOArquivoDeContratoEsperadoÉO(String contract) throws IOException, JSONException {
+        cadastroReciclagemService.setContract(contract);
+    }
+
+    @Então("a resposta da requisição deve estar em conformidade com o contrato selecionado")
+    public void aRespostaDaRequisiçãoDeveEstarEmConformidadeComOContratoSelecionado() throws IOException, JSONException {
+        Set<ValidationMessage> validateResponse = cadastroReciclagemService.validateResponseAgainstSchema();
+        Assert.assertTrue("O contrato está inválido. Erros encontrados: " + validateResponse, validateResponse.isEmpty());
     }
 }
