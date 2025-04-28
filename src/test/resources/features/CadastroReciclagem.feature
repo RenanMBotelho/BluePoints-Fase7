@@ -14,6 +14,7 @@ Funcionalidade: Cadastro de nova reciclagem
     Quando eu enviar a requisição para o endpoint "/api/reciclagem" de cadastro de reciclagem
     Então o status code da resposta deve ser 201
 
+  @padrão
   Cenário: Cadastro de reciclagem sem sucesso ao passar o campo peso com valor negativo
     Dado que eu tenha os seguintes dados da reciclagem:
       | campo      | valor                  |

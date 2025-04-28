@@ -1,0 +1,6 @@
+model\ReciclagemModel.class
+model\ErrorMessageModel.class
+steps\CadastroReciclagemSteps.class
+hook\Hook.class
+services\CadastroReciclagemService.class
+runner\TestRunner.class
