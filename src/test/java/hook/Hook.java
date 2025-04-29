@@ -19,13 +19,13 @@ public class Hook {
     @Before
     public void setUp() {
         // Simulação de configuração antes da execução de cada cenário
-        System.out.println("Iniciando um novo cenário de teste...");
+        System.out.println("Iniciando um novo cenário de testes para o BluePoints.");
         prepararDadosParaTeste();
     }
     @After
     public void tearDown() {
         // Simulação de limpeza após a execução de cada cenário
-        System.out.println("Finalizando o cenário de teste...");
+        System.out.println("Finalizando o cenário de teste.");
         limparDadosDepoisDoTeste();
     }
     private static void inicializarAmbiente() {

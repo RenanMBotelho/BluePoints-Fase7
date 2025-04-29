@@ -1,4 +1,5 @@
 # language: pt
+@padrão
 Funcionalidade: Cadastro de nova reciclagem
   Como usuário da API
   Quero cadastrar uma nova reciclagem

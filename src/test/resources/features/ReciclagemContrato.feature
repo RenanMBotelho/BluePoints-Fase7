@@ -1,4 +1,5 @@
 # language: pt
+@padrão
 Funcionalidade: Validar o contrato ao realizar um cadastro dem sucedido de reciclagem
   Como usuário da API
   Quero cadastrar uma nova reciclagem bem sucedida

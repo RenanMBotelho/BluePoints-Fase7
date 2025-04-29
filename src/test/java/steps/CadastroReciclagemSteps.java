@@ -16,7 +16,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class CadastroReciclagemSteps {
+
     CadastroReciclagemService cadastroReciclagemService = new CadastroReciclagemService();
+
     @Dado("que eu tenha os seguintes dados da reciclagem:")
     public void queEuTenhaOsSeguintesDadosDaReciclagem(List<Map<String, String>> rows) {
         for(Map<String, String> columns : rows) {

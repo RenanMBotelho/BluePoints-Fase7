@@ -1,4 +1,5 @@
 # language: pt
+@padrão
 Funcionalidade: Exclusão de reciclagem
   Como usuário da API
   Quero excluir uma reciclagem

@@ -5,4 +5,7 @@ import lombok.Data;
 public class ErrorMessageModel {
     @Expose
     private String peso;
+    @Expose
+    private String message;
 }
+
