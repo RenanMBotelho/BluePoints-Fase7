@@ -10,7 +10,7 @@ Funcionalidade: Cadastro de nova reciclagem
       | campo      | valor                  |
       | usuario    | 1                      |
       | local      | Centro de reciclagem 1 |
-      | data       | 2025-04-26             |
+      | data       | 2025-04-30             |
       | peso       | 10                     |
     Quando eu enviar a requisição para o endpoint "/api/reciclagem" de cadastro de reciclagem
     Então o status code da resposta deve ser 201

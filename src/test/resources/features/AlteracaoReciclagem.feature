@@ -11,7 +11,7 @@ Funcionalidade: Alteração de reciclagem
       | id         | 3                      |
       | usuario    | 1                      |
       | local      | Centro de reciclagem 3 |
-      | data       | 2025-04-29             |
+      | data       | 2025-04-30             |
       | peso       | 10                     |
     Quando eu enviar a requisição para o endpoint "/api/reciclagem" de alteração de reciclagem
     Então o status code da resposta de alteração deve ser 200
