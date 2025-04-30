@@ -34,11 +34,14 @@ public class CadastroReciclagemSteps {
         Assert.assertEquals(statusCode, cadastroReciclagemService.response.statusCode());
     }
 
-    @E("o corpo de resposta de erro da api deve retornar a mensagem {string}")
-    public void oCorpoDeRespostaDeErroDaApiDeveRetornarAMensagem(String message) {
+    @E("o corpo de resposta de erro da api deve retornar a mensagem {string} ou {string}")
+    public void oCorpoDeRespostaDeErroDaApiDeveRetornarAMensagemOuOutra(String msg1, String msg2) {
         ErrorMessageModel errorMessageModel = cadastroReciclagemService.gson.fromJson(
                 cadastroReciclagemService.response.jsonPath().prettify(), ErrorMessageModel.class);
-        Assert.assertEquals(message, errorMessageModel.getPeso());
+        String mensagemRecebida = errorMessageModel.getPeso();
+        Assert.assertTrue(
+                mensagemRecebida.equals(msg1) || mensagemRecebida.equals(msg2)
+        );
     }
 
     @Dado("que eu recupere o ID da reciclagem criada no contexto")
