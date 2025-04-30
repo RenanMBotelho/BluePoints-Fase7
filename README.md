@@ -10,7 +10,6 @@
 - Instalação
 - Uso
 - Docker
-- CI/CD com GitHub Actions
 - Testes
 
 ## Descrição
@@ -23,72 +22,52 @@ Este fonte realiza testes via api das funcionalidades de CRUD do aplicativo.
 - Fazer cadastro no aplicativo.
 - Fazer login para recebimento do token para teste de api.
 - Cadastro de reciclagem também através de api.
-- Consulta de registros.
-- Alteração de registros.
-- Exclusão de registros.
+- Consulta de reciclagem.
+- Alteração de reciclagem.
+- Exclusão de reciclagem.
 
 ## Pré-requisitos
 
-- IDE para clonar o código.
-- Arquivos de teste de api para o aplicativo.
-- Programa Postman ou Insomnia para testes de api com os arquivos.
-- Liberação da porta 8080 para o programa rodar via Docker.
+- IDE Intellij para clonar o código.
 - Docker instalado para execução em contêiner.
+- Caso desejado, programa Postman ou Insomnia para testes de api com os arquivos.
+- Liberação da porta 8080 para o programa rodar.
 
-## Instalação
+## Instalação 
 
-Siga os passos abaixo para configurar o ambiente de desenvolvimento:
+Siga o passo abaixo para configurar o ambiente de desenvolvimento:
 
-1. Clone este repositório no ambiente de desenvolvimento (indicado o programa Intellij ou Visual Studio Code): https://github.com/RenanMBotelho/BluePoints-Fase6-01.git
-2. Caso deseje, instale o programa Postman ou Insomnia.
+1. Clone este repositório no ambiente de desenvolvimento (indicado o programa Intellij): https://github.com/RenanMBotelho/BluePoints-Fase7.git
 
 ## Uso
 
-1. Rode o programa e se certifique que não tenha apresentado erro no terminal.
-2. É possível usar o programa através do navegador, utilizando a extenção Swagger no link: http://localhost:8080/swagger-ui/index.html#/
+1. Crie e rode a imagem com o Docker através o terminal da IDE.
+2. Ou rode o programa pelo main app e se certifique que não tenha apresentado erro no terminal.
+2. É possível usar o programa através do navegador, para testes de api, utilizando a extenção Swagger no link: http://localhost:8080/swagger-ui/index.html#/
 3. É possível também utilizar através do programa Postman ou similar com o json de api já importado, encontrando no diretório do projeto.
 
 ## Docker
 
-A aplicação pode ser executada em um contêiner Docker, facilitando a implantação em diferentes ambientes.
+A aplicação deve ser executada em um contêiner Docker, facilitando a implantação em diferentes ambientes.
 
 ### Construindo a imagem Docker
 
 ```bash
-docker build -t bluepoints:latest .
+docker build -t bluepoints-app .
 ```
 
 ### Executando a aplicação via Docker
 
 ```bash
-docker run -p 8080:8080 bluepoints:latest
+docker run -p 8080:8080 --name bluepoints-container bluepoints-app
 ```
 
-### Utilizando Docker Compose
+## Executando os testes
 
-Para iniciar a aplicação com todas as configurações necessárias:
+Com o programa rodando, seja diretamente na IDE ou via docker, os testes devem ser executados:
 
-```bash
-docker compose up
-```
-
-## CI/CD com GitHub Actions
-
-Este projeto utiliza GitHub Actions para automação de integração contínua. O pipeline executa as seguintes etapas:
-
-1. Compila o código Java
-2. Executa testes unitários
-3. Constrói a imagem Docker
-4. Verifica se a imagem Docker pode ser executada
-5. Valida a configuração do Docker Compose
-
-Para ver o status das execuções, acesse a aba "Actions" no repositório GitHub.
-
-## Testes
-
-1. Primeiro teste: fazendo login com o usuário predefinido no json, no endpoint "login usuário", para recebimento do token. É possível, caso desejado, fazer o cadastro de um usuário.
-2. Segundo teste: com o token recebido, o mesmo deverá ser aplicado em todos os demais testes de CRUD, na opção "Auth", como Bearer Token.
-3. Terceiro teste: na opção "incluir reciclagem", com o token já aplicado, pode ser usado o conteúdo do body como exemplo para registro de reciclagem no aplicativo.
-4. Quarto teste: na opção "listar reciclagens", é possível obter um get com todos os registros de reciclagem do banco de dados.
-5. Quinto teste: na opção de "atualizar reciclagem", é passado o ID que se deseja alterar e as alterações a serem feitas.
-6. Sexto teste: por fim, para concluir o CRUD, é possível exluir um registro passando o ID que se deseja deletar no endereço do endpoint.
+1. Teste dos cenários 1 e 2, arquivo CadastroReciclagem.feature, diretório src/test/resources/feature
+2. Teste dos cenários 3 e 4, arquivo AlteracaoReciclagem.feature, diretório src/test/resources/feature
+3. Teste do cenário de Contexto, arquivo ExclusaoReciclagemContexto.feature, diretório src/test/resources/feature
+4. Teste do cenário de Contrato, arquivo ReciclagemContrato.feature, diretório src/test/resources/feature
+5. Teste com TestRunner, arquivo TestRunner, diretório src/test/java/runner
